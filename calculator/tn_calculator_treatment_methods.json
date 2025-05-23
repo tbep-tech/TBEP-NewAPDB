@@ -1,0 +1,70 @@
+[
+  {
+    "name": "Alum Injection",
+    "removal_rate": 0.35
+  },
+  {
+    "name": "Baffle Box",
+    "removal_rate": 0.3
+  },
+  {
+    "name": "CDS Unit",
+    "removal_rate": 0.1
+  },
+  {
+    "name": "Constructed Wetland",
+    "removal_rate": 0.25
+  },
+  {
+    "name": "Education",
+    "removal_rate": 0.1
+  },
+  {
+    "name": "ExfiltrationTrench",
+    "removal_rate": 0.57
+  },
+  {
+    "name": "Extended Detention Pond",
+    "removal_rate": 0.3
+  },
+  {
+    "name": "Infiltration Basin",
+    "removal_rate": 0.58
+  },
+  {
+    "name": "Vegetated Buffer Strip",
+    "removal_rate": 0.35
+  },
+  {
+    "name": "Vegetated Swale",
+    "removal_rate": 0.1
+  },
+  {
+    "name": "Wastewater Reuse",
+    "removal_rate": 0.9
+  },
+  {
+    "name": "Wastewater Reuse St. Pete",
+    "removal_rate": 0.95
+  },
+  {
+    "name": "Wet Pond",
+    "removal_rate": 0.3
+  },
+  {
+    "name": "Street Sweeping",
+    "removal_rate": 1.0
+  },
+  {
+    "name": "Stormwater Sump Clean Out",
+    "removal_rate": 1.0
+  },
+  {
+    "name": "Dredging",
+    "removal_rate": 1.0
+  },
+  {
+    "name": "Not Listed",
+    "removal_rate": 0.0
+  }
+]

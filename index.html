@@ -1,0 +1,555 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TBEP Action Plan Database</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <!-- Bootstrap CSS for responsive design -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css"
+    />
+  </head>
+  <body>
+    <header class="header">
+      <nav class="navbar" role="navigation" aria-label="Main navigation">
+        <div class="content-container">
+          <span class="navbar-brand" role="text"
+            >TBEP Action Plan Database</span
+          >
+          <button
+            class="hamburger-menu"
+            aria-label="Toggle navigation menu"
+            aria-expanded="false"
+            aria-controls="nav-links"
+          >
+            <span class="bar" aria-hidden="true"></span>
+            <span class="bar" aria-hidden="true"></span>
+          </button>
+          <div class="nav-links" id="nav-links">
+            <button class="close-menu" aria-label="Close menu">×</button>
+            <a
+              href="#new-project"
+              class="nav-link"
+              role="link"
+              aria-label="Report new project"
+              >Report New Project</a
+            >
+            <a
+              href="#existing-projects"
+              class="nav-link"
+              role="link"
+              aria-label="Update existing project"
+              >Update Existing Project</a
+            >
+            <a
+              href="#tn-allocation"
+              class="nav-link"
+              role="link"
+              aria-label="Report TN allocation transfer"
+              >Report TN Allocation Transfer</a
+            >
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main
+      class="container-fluid"
+      aria-label="TBEP Action Plan Database Main Content"
+    >
+      <div class="content-container">
+        <!-- Instruction Section -->
+        <section class="instruction-section">
+          <div class="instruction-content">
+            <h1>TBEP Action Plan Database</h1>
+            <p>
+              Please enter a new project by entering the information requested
+              on the form below. For education or ongoing projects such as
+              sweeping, you should create a new project for every new year the
+              activity was performed. If this text keeps growing longer then the
+              image to the right will just expand to make sure it covers the
+              same vertical distance as the height of this container.
+            </p>
+          </div>
+          <img
+            src="placeholder-image.jpg"
+            alt="TBEP Action Plan Database illustration"
+            class="instruction-image"
+            aria-hidden="true"
+          />
+        </section>
+
+        <!-- Report New Project Section -->
+        <section id="new-project">
+          <div class="report-section">
+            <h2>Report new project</h2>
+            <p>
+              Please enter a new project by entering the information requested
+              on the form below. For education or ongoing projects such as
+              sweeping, you should create a new project for every new year the
+              activity was performed.
+            </p>
+          </div>
+
+          <!-- Form and Calculator Container -->
+          <div class="form-calculator-container">
+            <div class="form-container">
+              <div class="card">
+                <div class="card-body">
+                  <div class="iframe-container">
+                    <iframe
+                      width="600"
+                      height="1200"
+                      src="https://app.smartsheet.com/b/form/98c3743ceec54fd4be1e9a4a23e148cd"
+                    >
+                      title="Smartsheet Form" aria-label="Smartsheet Form"
+                      loading="lazy" role="document" >
+                      <p>
+                        Your browser does not support iframes. Please
+                        <a
+                          href="https://app.smartsheet.com/b/form/349fcff3e5b540488b9ae84214303e61"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          >open the form in a new window</a
+                        >.
+                      </p>
+                    </iframe>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="calculator-container">
+              <div class="card">
+                <div class="calculator-content">
+                  <h2>TN estimation load calculator</h2>
+                  <p class="calculator-description">
+                    Only use this tool if you don't already have a TN estimation
+                    number. Where in doubt, refer to your own data.
+                  </p>
+                </div>
+
+                <!-- Calculator Form -->
+                <div
+                  class="calculator-form"
+                  role="region"
+                  aria-label="TN Load Calculator"
+                >
+                  <ul
+                    class="nav nav-tabs"
+                    id="calculatorTabs"
+                    role="tablist"
+                    aria-label="Calculator Type Selection"
+                  >
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link active"
+                        id="nps-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#nps"
+                        type="button"
+                        role="tab"
+                        aria-controls="nps"
+                        aria-selected="true"
+                        tabindex="0"
+                      >
+                        Non-Point Source
+                      </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button
+                        class="nav-link"
+                        id="ps-tab"
+                        data-bs-toggle="tab"
+                        data-bs-target="#ps"
+                        type="button"
+                        role="tab"
+                        aria-controls="ps"
+                        aria-selected="false"
+                        tabindex="-1"
+                      >
+                        Point Source
+                      </button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="calculatorTabsContent">
+                    <!-- Non-Point Source Calculator -->
+                    <div
+                      class="tab-pane fade show active"
+                      id="nps"
+                      role="tabpanel"
+                      aria-labelledby="nps-tab"
+                      tabindex="0"
+                    >
+                      <button
+                        class="visually-hidden calculator-return-to-tabs"
+                        aria-label="Return to calculator type selection"
+                      >
+                        Return to calculator tabs
+                      </button>
+                      <form
+                        id="nps-calculator-form"
+                        aria-label="Non-Point Source Calculator Form"
+                      >
+                        <div class="form-group">
+                          <label for="npsLandUse" id="npsLandUseLabel"
+                            >Land Use</label
+                          >
+                          <select
+                            class="form-control"
+                            id="npsLandUse"
+                            name="npsLandUse"
+                            required
+                            aria-labelledby="npsLandUseLabel"
+                            aria-describedby="npsLandUseHelp"
+                          >
+                            <option value="">Select Land Use</option>
+                          </select>
+                          <div id="npsLandUseHelp" class="form-text">
+                            Select the land use type for your project
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label
+                            for="npsTreatmentMethod"
+                            id="npsTreatmentMethodLabel"
+                            >Treatment Method</label
+                          >
+                          <select
+                            class="form-control"
+                            id="npsTreatmentMethod"
+                            name="npsTreatmentMethod"
+                            required
+                            aria-labelledby="npsTreatmentMethodLabel"
+                            aria-describedby="npsTreatmentMethodHelp"
+                          >
+                            <option value="">Select Treatment Method</option>
+                          </select>
+                          <div id="npsTreatmentMethodHelp" class="form-text">
+                            Select the treatment method for your project
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label
+                            for="npsTreatmentArea"
+                            id="npsTreatmentAreaLabel"
+                            >Treatment Area (acres)</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="npsTreatmentArea"
+                            name="npsTreatmentArea"
+                            step="0.01"
+                            min="0"
+                            required
+                            aria-labelledby="npsTreatmentAreaLabel"
+                            aria-describedby="npsTreatmentAreaHelp"
+                            title="Enter the treatment area in acres. Decimal values are allowed."
+                          />
+                          <div
+                            id="npsTreatmentAreaHelp"
+                            class="form-text visually-hidden"
+                          >
+                            Enter the treatment area in acres. Decimal values
+                            are allowed.
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                          Calculate NPS TN Load Reduction
+                        </button>
+                      </form>
+                    </div>
+
+                    <!-- Point Source Calculator -->
+                    <div
+                      class="tab-pane fade"
+                      id="ps"
+                      role="tabpanel"
+                      aria-labelledby="ps-tab"
+                      tabindex="0"
+                    >
+                      <button
+                        class="visually-hidden calculator-return-to-tabs"
+                        aria-label="Return to calculator type selection"
+                      >
+                        Return to calculator tabs
+                      </button>
+                      <form
+                        id="ps-calculator-form"
+                        aria-label="Point Source Calculator Form"
+                      >
+                        <div class="form-group">
+                          <label for="psAvgDischarge" id="psAvgDischargeLabel"
+                            >Average Total Discharge (MGD)</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="psAvgDischarge"
+                            name="psAvgDischarge"
+                            step="0.01"
+                            min="0"
+                            required
+                            aria-labelledby="psAvgDischargeLabel"
+                            aria-describedby="psAvgDischargeHelp"
+                            title="Enter the average total discharge in Million Gallons per Day (MGD). Decimal values are allowed."
+                          />
+                          <div
+                            id="psAvgDischargeHelp"
+                            class="form-text visually-hidden"
+                          >
+                            Enter the average total discharge in Million Gallons
+                            per Day (MGD). Decimal values are allowed.
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label
+                            for="psTNConcentration"
+                            id="psTNConcentrationLabel"
+                            >TN Concentration (mg/L)</label
+                          >
+                          <input
+                            type="number"
+                            class="form-control"
+                            id="psTNConcentration"
+                            name="psTNConcentration"
+                            step="0.01"
+                            min="0"
+                            required
+                            aria-labelledby="psTNConcentrationLabel"
+                            aria-describedby="psTNConcentrationHelp"
+                            title="Enter the Total Nitrogen concentration in milligrams per liter (mg/L). Decimal values are allowed."
+                          />
+                          <div
+                            id="psTNConcentrationHelp"
+                            class="form-text visually-hidden"
+                          >
+                            Enter the Total Nitrogen concentration in milligrams
+                            per liter (mg/L). Decimal values are allowed.
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <label
+                            for="psAttenuationFactor"
+                            id="psAttenuationFactorLabel"
+                            >Attenuation Factor (%)</label
+                          >
+                          <div class="input-group">
+                            <input
+                              type="number"
+                              class="form-control"
+                              id="psAttenuationFactor"
+                              name="psAttenuationFactor"
+                              step="0.01"
+                              min="0"
+                              max="100"
+                              required
+                              aria-labelledby="psAttenuationFactorLabel"
+                              aria-describedby="psAttenuationFactorHelp"
+                              title="Enter the attenuation factor as a percentage (0-100). Decimal values are allowed."
+                            />
+                            <span class="input-group-text" aria-hidden="true"
+                              >%</span
+                            >
+                          </div>
+                          <div id="psAttenuationFactorHelp" class="form-text">
+                            Enter a value between 0 and 100
+                          </div>
+                        </div>
+                        <button type="submit" class="btn btn-primary">
+                          Calculate PS TN Load Reduction
+                        </button>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Calculator Result -->
+                <div class="calculator-result">
+                  <div
+                    id="nps-calculator-result"
+                    aria-live="polite"
+                    aria-atomic="true"
+                  ></div>
+                  <div
+                    id="ps-calculator-result"
+                    aria-live="polite"
+                    aria-atomic="true"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Existing Projects Section -->
+        <section id="existing-projects" class="mb-5">
+          <div class="report-section">
+            <h2>Existing Projects</h2>
+            <p>
+              To update an existing project, please locate your project number
+              in the list below. Once found, you can request access to edit the
+              project and submit your changes. For education or ongoing
+              projects, ensure you're updating the correct year's entry.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <ol>
+                <li>Find the project number</li>
+                <li>Request access to edit</li>
+                <li>Receive email and submit your change</li>
+              </ol>
+              <div class="iframe-container reports-container">
+                <button
+                  class="visually-hidden iframe-escape"
+                  aria-label="Exit iframe section"
+                >
+                  Exit iframe section
+                </button>
+                <iframe
+                  width="1000"
+                  height="700"
+                  frameborder="0"
+                  src="https://app.smartsheet.com/b/publish?EQBCT=59d2be9b3bbf492882b62ba57d8420b7"
+                  title="Smartsheet Reports View"
+                  aria-label="Smartsheet Reports View"
+                  loading="lazy"
+                  role="document"
+                >
+                  <p>
+                    Your browser does not support iframes. Please
+                    <a
+                      href="https://app.smartsheet.com/b/publish?EQBCT=59d2be9b3bbf492882b62ba57d8420b7"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >open the reports in a new window</a
+                    >.
+                  </p>
+                </iframe>
+              </div>
+            </div>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="iframe-container">
+                <button
+                  class="visually-hidden iframe-escape"
+                  aria-label="Exit iframe section"
+                >
+                  Exit iframe section
+                </button>
+                <iframe
+                  width="1000"
+                  height="700"
+                  src="https://app.smartsheet.com/b/form/0e2dfc54698e4ddf90ff0ae90e969a69"
+                  title="Smartsheet Form"
+                  aria-label="Smartsheet Form"
+                  loading="lazy"
+                  role="document"
+                >
+                  <p>
+                    Your browser does not support iframes. Please
+                    <a
+                      href="https://app.smartsheet.com/b/form/0e2dfc54698e4ddf90ff0ae90e969a69"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >open the form in a new window</a
+                    >.
+                  </p>
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- TN Allocation Transfer Section -->
+        <section id="tn-allocation" class="mb-5">
+          <div class="report-section">
+            <h2>Report TN Allocation Transfer</h2>
+            <p>
+              Use this form to report transfers of TN allocation between
+              entities. Please ensure you have all necessary documentation and
+              approval before submitting the transfer request. Both the sending
+              and receiving entities must be clearly identified.
+            </p>
+          </div>
+          <div class="card">
+            <div class="card-body">
+              <div class="iframe-container reports-container">
+                <button
+                  class="visually-hidden iframe-escape"
+                  aria-label="Exit iframe section"
+                >
+                  Exit iframe section
+                </button>
+                <iframe
+                  width="900"
+                  height="600"
+                  src="https://app.smartsheet.com/b/form/8918f2ed52e04edf828bd22b5ce72850"
+                  title="TN Allocation Transfer Form"
+                  aria-label="TN Allocation Transfer Form"
+                  loading="lazy"
+                  role="document"
+                >
+                  <p>
+                    Your browser does not support iframes. Please
+                    <a
+                      href="https://app.smartsheet.com/b/form/8918f2ed52e04edf828bd22b5ce72850"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      >open the form in a new window</a
+                    >.
+                  </p>
+                </iframe>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="content-container">
+        <p>&copy; 2024 TBEP Action Plan Database. All rights reserved.</p>
+      </div>
+    </footer>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        // Initialize searchable dropdowns
+        const searchableDropdowns =
+          document.querySelectorAll(".searchable-select");
+        searchableDropdowns.forEach((dropdown) => {
+          new Choices(dropdown, {
+            searchEnabled: true,
+            searchPlaceholderValue: "Type to search...",
+            placeholder: true,
+            placeholderValue: "Select an option",
+            removeItemButton: false,
+            classNames: {
+              containerOuter: "choices form-select",
+            },
+          });
+        });
+      });
+    </script>
+  </body>
+</html>

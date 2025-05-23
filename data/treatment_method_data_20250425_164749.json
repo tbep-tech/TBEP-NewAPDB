@@ -1,0 +1,588 @@
+{
+  "id": 7586918783995780,
+  "name": "Final_Treatment_Method_Full_Sheet",
+  "version": 2,
+  "totalRowCount": 17,
+  "accessLevel": "OWNER",
+  "effectiveAttachmentOptions": [
+    "GOOGLE_DRIVE",
+    "FILE",
+    "DROPBOX",
+    "ONEDRIVE",
+    "LINK",
+    "EGNYTE",
+    "BOX_COM",
+    "EVERNOTE"
+  ],
+  "ganttEnabled": false,
+  "dependenciesEnabled": false,
+  "resourceManagementEnabled": false,
+  "resourceManagementType": "NONE",
+  "cellImageUploadEnabled": true,
+  "userSettings": {
+    "criticalPathEnabled": false,
+    "displaySummaryTasks": true
+  },
+  "userPermissions": {
+    "summaryPermissions": "ADMIN"
+  },
+  "workspace": {
+    "id": 5147061730469764,
+    "name": "Untitled workspace"
+  },
+  "hasSummaryFields": false,
+  "permalink": "https://app.smartsheet.com/sheets/fQ379f5c9Xh524Ww78j6qmM95mxJRCgjhJCCfxH1",
+  "createdAt": "2025-04-25T23:36:54Z",
+  "modifiedAt": "2025-04-25T23:36:54Z",
+  "isMultiPicklistEnabled": true,
+  "columns": [
+    {
+      "id": 3431411136810884,
+      "version": 0,
+      "index": 0,
+      "title": "Treatment Method",
+      "type": "TEXT_NUMBER",
+      "primary": true,
+      "validation": false,
+      "width": 150
+    },
+    {
+      "id": 7935010764181380,
+      "version": 0,
+      "index": 1,
+      "title": "Default Removal Rate (TN)",
+      "type": "TEXT_NUMBER",
+      "validation": false,
+      "width": 150
+    },
+    {
+      "id": 616661369704324,
+      "version": 0,
+      "index": 2,
+      "title": "Default Removal Rate (TP)",
+      "type": "TEXT_NUMBER",
+      "validation": false,
+      "width": 150
+    },
+    {
+      "id": 5120260997074820,
+      "version": 0,
+      "index": 3,
+      "title": "Default Removal Rate (TSS)",
+      "type": "TEXT_NUMBER",
+      "validation": false,
+      "width": 150
+    }
+  ],
+  "rows": [
+    {
+      "id": 349951581622148,
+      "rowNumber": 1,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Alum Injection",
+          "displayValue": "Alum Injection"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.35,
+          "displayValue": "0.35"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.9,
+          "displayValue": "0.9"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.9,
+          "displayValue": "0.9"
+        }
+      ]
+    },
+    {
+      "id": 4853551208992644,
+      "rowNumber": 2,
+      "siblingId": 349951581622148,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Baffle Box",
+          "displayValue": "Baffle Box"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.3,
+          "displayValue": "0.3"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.25,
+          "displayValue": "0.25"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.7,
+          "displayValue": "0.7"
+        }
+      ]
+    },
+    {
+      "id": 2601751395307396,
+      "rowNumber": 3,
+      "siblingId": 4853551208992644,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "CDS Unit",
+          "displayValue": "CDS Unit"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.1,
+          "displayValue": "0.1"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.0,
+          "displayValue": "0"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.0,
+          "displayValue": "0"
+        }
+      ]
+    },
+    {
+      "id": 7105351022677892,
+      "rowNumber": 4,
+      "siblingId": 2601751395307396,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Constructed Wetland",
+          "displayValue": "Constructed Wetland"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.25,
+          "displayValue": "0.25"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.35,
+          "displayValue": "0.35"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.75,
+          "displayValue": "0.75"
+        }
+      ]
+    },
+    {
+      "id": 1475851488464772,
+      "rowNumber": 5,
+      "siblingId": 7105351022677892,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Education",
+          "displayValue": "Education"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.1,
+          "displayValue": "0.1"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.1,
+          "displayValue": "0.1"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.1,
+          "displayValue": "0.1"
+        }
+      ]
+    },
+    {
+      "id": 5979451115835268,
+      "rowNumber": 6,
+      "siblingId": 1475851488464772,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "ExfiltrationTrench",
+          "displayValue": "ExfiltrationTrench"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.57,
+          "displayValue": "0.57"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.57,
+          "displayValue": "0.57"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.83,
+          "displayValue": "0.83"
+        }
+      ]
+    },
+    {
+      "id": 3727651302150020,
+      "rowNumber": 7,
+      "siblingId": 5979451115835268,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Extended Detention Pond",
+          "displayValue": "Extended Detention Pond"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.3,
+          "displayValue": "0.3"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.6,
+          "displayValue": "0.6"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.48,
+          "displayValue": "0.48"
+        }
+      ]
+    },
+    {
+      "id": 8231250929520516,
+      "rowNumber": 8,
+      "siblingId": 3727651302150020,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Infiltration Basin",
+          "displayValue": "Infiltration Basin"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.58,
+          "displayValue": "0.58"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.63,
+          "displayValue": "0.63"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.87,
+          "displayValue": "0.87"
+        }
+      ]
+    },
+    {
+      "id": 912901535043460,
+      "rowNumber": 9,
+      "siblingId": 8231250929520516,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Vegetated Buffer Strip",
+          "displayValue": "Vegetated Buffer Strip"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.35,
+          "displayValue": "0.35"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.45,
+          "displayValue": "0.45"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.5,
+          "displayValue": "0.5"
+        }
+      ]
+    },
+    {
+      "id": 5416501162413956,
+      "rowNumber": 10,
+      "siblingId": 912901535043460,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Vegetated Swale",
+          "displayValue": "Vegetated Swale"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.1,
+          "displayValue": "0.1"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.15,
+          "displayValue": "0.15"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.0,
+          "displayValue": "0"
+        }
+      ]
+    },
+    {
+      "id": 3164701348728708,
+      "rowNumber": 11,
+      "siblingId": 5416501162413956,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Wastewater Reuse",
+          "displayValue": "Wastewater Reuse"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.9,
+          "displayValue": "0.9"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.0,
+          "displayValue": "0"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.0,
+          "displayValue": "0"
+        }
+      ]
+    },
+    {
+      "id": 7668300976099204,
+      "rowNumber": 12,
+      "siblingId": 3164701348728708,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Wastewater Reuse St. Pete",
+          "displayValue": "Wastewater Reuse St. Pete"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.95,
+          "displayValue": "0.95"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.0,
+          "displayValue": "0"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.0,
+          "displayValue": "0"
+        }
+      ]
+    },
+    {
+      "id": 2038801441886084,
+      "rowNumber": 13,
+      "siblingId": 7668300976099204,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Wet Pond",
+          "displayValue": "Wet Pond"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.3,
+          "displayValue": "0.3"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.6,
+          "displayValue": "0.6"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.6,
+          "displayValue": "0.6"
+        }
+      ]
+    },
+    {
+      "id": 6542401069256580,
+      "rowNumber": 14,
+      "siblingId": 2038801441886084,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Street Sweeping",
+          "displayValue": "Street Sweeping"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 1.0,
+          "displayValue": "1"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 1.0,
+          "displayValue": "1"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 1.0,
+          "displayValue": "1"
+        }
+      ]
+    },
+    {
+      "id": 4290601255571332,
+      "rowNumber": 15,
+      "siblingId": 6542401069256580,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Stormwater Sump Clean Out",
+          "displayValue": "Stormwater Sump Clean Out"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 1.0,
+          "displayValue": "1"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 1.0,
+          "displayValue": "1"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 1.0,
+          "displayValue": "1"
+        }
+      ]
+    },
+    {
+      "id": 8794200882941828,
+      "rowNumber": 16,
+      "siblingId": 4290601255571332,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Dredging",
+          "displayValue": "Dredging"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 1.0,
+          "displayValue": "1"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 1.0,
+          "displayValue": "1"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 1.0,
+          "displayValue": "1"
+        }
+      ]
+    },
+    {
+      "id": 209214093266820,
+      "rowNumber": 17,
+      "siblingId": 8794200882941828,
+      "expanded": true,
+      "createdAt": "2025-04-25T23:36:54Z",
+      "modifiedAt": "2025-04-25T23:36:54Z",
+      "cells": [
+        {
+          "columnId": 3431411136810884,
+          "value": "Not Listed",
+          "displayValue": "Not Listed"
+        },
+        {
+          "columnId": 7935010764181380,
+          "value": 0.0,
+          "displayValue": "0"
+        },
+        {
+          "columnId": 616661369704324,
+          "value": 0.0,
+          "displayValue": "0"
+        },
+        {
+          "columnId": 5120260997074820,
+          "value": 0.0,
+          "displayValue": "0"
+        }
+      ]
+    }
+  ]
+}

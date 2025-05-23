@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Agricultural - Citrus",
+    "base_load": 1.82
+  },
+  {
+    "name": "Agricultural - Feed Lot",
+    "base_load": 46.45
+  },
+  {
+    "name": "Agricultural - Field and Row Crop",
+    "base_load": 6.92
+  },
+  {
+    "name": "Agricultural - Nursery",
+    "base_load": 1.64
+  },
+  {
+    "name": "Agricultural - Pasture",
+    "base_load": 3.31
+  },
+  {
+    "name": "Barren",
+    "base_load": 3.66
+  },
+  {
+    "name": "Commercial",
+    "base_load": 7.29
+  },
+  {
+    "name": "Forested Freshwater Wetlands",
+    "base_load": 3.72
+  },
+  {
+    "name": "Freshwater - Open Water",
+    "base_load": 0.0
+  },
+  {
+    "name": "Industrial",
+    "base_load": 5.84
+  },
+  {
+    "name": "Institutional/Transportation/Utilities",
+    "base_load": 2.95
+  },
+  {
+    "name": "Medium Density Residential",
+    "base_load": 4.15
+  },
+  {
+    "name": "Mining",
+    "base_load": 2.79
+  },
+  {
+    "name": "Multifamily Residential",
+    "base_load": 5.07
+  },
+  {
+    "name": "Non-forested Freshwater Wetlands",
+    "base_load": 3.54
+  },
+  {
+    "name": "Rangeland",
+    "base_load": 2.14
+  },
+  {
+    "name": "Saltwater Wetlands",
+    "base_load": 0.0
+  },
+  {
+    "name": "Single Family Residential",
+    "base_load": 2.47
+  },
+  {
+    "name": "Upland Forested",
+    "base_load": 0.55
+  },
+  {
+    "name": "Not Listed",
+    "base_load": 0.0
+  }
+]
