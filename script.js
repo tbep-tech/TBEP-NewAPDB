@@ -90,21 +90,6 @@ class TNCalculator {
     const tabList = document.getElementById("calculatorTabs");
     const tabs = tabList.querySelectorAll('[role="tab"]');
 
-    // Initialize tab panel navigation
-    const returnToTabsButtons = document.querySelectorAll(
-      ".calculator-return-to-tabs"
-    );
-    returnToTabsButtons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const activeTab = document.querySelector(
-          '[role="tab"][aria-selected="true"]'
-        );
-        if (activeTab) {
-          activeTab.focus();
-        }
-      });
-    });
-
     // Handle iframe escape
     const iframeEscapeButtons = document.querySelectorAll(".iframe-escape");
     iframeEscapeButtons.forEach((button) => {
@@ -216,8 +201,7 @@ class TNCalculator {
       setTimeout(() => {
         const result = document.getElementById("nps-calculator-result");
         if (result) {
-          const copyButton = result.querySelector(".copy-value");
-          if (copyButton) copyButton.focus();
+          result.focus();
         }
       }, 100);
     });
@@ -226,8 +210,7 @@ class TNCalculator {
       setTimeout(() => {
         const result = document.getElementById("ps-calculator-result");
         if (result) {
-          const copyButton = result.querySelector(".copy-value");
-          if (copyButton) copyButton.focus();
+          result.focus();
         }
       }, 100);
     });
@@ -469,37 +452,69 @@ class TNCalculator {
   displayNPSResult(tnLoadReduction, treatmentMethod) {
     const resultElement = this.npsResult;
     resultElement.innerHTML = `
-      <div class="calculator-result-container">
+      <div class="calculator-result-container" 
+           role="alert"
+           aria-atomic="true"
+           aria-relevant="all"
+           tabindex="0">
         <div class="result-content">
           <h4>${tnLoadReduction.toFixed(2)} lbs/year</h4>
           <p>NPS TN Load Reduction</p>
+          <div class="sr-only">Calculation complete. The NPS TN Load Reduction is ${tnLoadReduction.toFixed(
+            2
+          )} pounds per year.</div>
         </div>
         <button type="button" class="copy-value" data-value="${tnLoadReduction.toFixed(
           2
-        )}">
+        )}" aria-label="Copy result value">
           Copy Value
         </button>
       </div>
     `;
     this.initializeCopyButtons();
+    // Focus the result container
+    setTimeout(() => {
+      const resultContainer = resultElement.querySelector(
+        ".calculator-result-container"
+      );
+      if (resultContainer) {
+        resultContainer.focus();
+      }
+    }, 100);
   }
 
   displayPSResult(tnLoadReduction) {
     const resultElement = this.psResult;
     resultElement.innerHTML = `
-      <div class="calculator-result-container">
+      <div class="calculator-result-container" 
+           role="alert"
+           aria-atomic="true"
+           aria-relevant="all"
+           tabindex="0">
         <div class="result-content">
           <h4>${tnLoadReduction.toFixed(2)} lbs/year</h4>
           <p>PS TN Load Reduction</p>
+          <div class="sr-only">Calculation complete. The PS TN Load Reduction is ${tnLoadReduction.toFixed(
+            2
+          )} pounds per year.</div>
         </div>
         <button type="button" class="copy-value" data-value="${tnLoadReduction.toFixed(
           2
-        )}">
+        )}" aria-label="Copy result value">
           Copy Value
         </button>
       </div>
     `;
     this.initializeCopyButtons();
+    // Focus the result container
+    setTimeout(() => {
+      const resultContainer = resultElement.querySelector(
+        ".calculator-result-container"
+      );
+      if (resultContainer) {
+        resultContainer.focus();
+      }
+    }, 100);
   }
 
   initializeCopyButtons() {

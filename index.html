@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="TBEP Action Plan Database - A tool for managing environmental projects in the Tampa Bay area"
+    />
     <title>TBEP Action Plan Database</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -22,12 +26,15 @@
     />
   </head>
   <body>
-    <header class="header">
+    <!-- Skip Navigation -->
+    <a href="#instruction-content" class="visually-hidden-focusable"
+      >Skip to instructions</a
+    >
+
+    <header class="header" role="banner">
       <nav class="navbar" role="navigation" aria-label="Main navigation">
         <div class="content-container">
-          <span class="navbar-brand" role="text"
-            >TBEP Action Plan Database</span
-          >
+          <span class="navbar-brand">TBEP Action Plan Database</span>
           <button
             class="hamburger-menu"
             aria-label="Toggle navigation menu"
@@ -44,6 +51,7 @@
               class="nav-link"
               role="link"
               aria-label="Report new project"
+              data-instruction-target="new-project-instructions"
               >Report New Project</a
             >
             <a
@@ -51,6 +59,7 @@
               class="nav-link"
               role="link"
               aria-label="Update existing project"
+              data-instruction-target="existing-projects-instructions"
               >Update Existing Project</a
             >
             <a
@@ -58,6 +67,7 @@
               class="nav-link"
               role="link"
               aria-label="Report TN allocation transfer"
+              data-instruction-target="tn-allocation-instructions"
               >Report TN Allocation Transfer</a
             >
           </div>
@@ -66,13 +76,18 @@
     </header>
 
     <main
+      id="main-content"
       class="container-fluid"
       aria-label="TBEP Action Plan Database Main Content"
     >
       <div class="content-container">
         <!-- Instruction Section -->
         <section class="instruction-section">
-          <div class="instruction-content">
+          <div
+            class="instruction-content"
+            id="instruction-content"
+            tabindex="0"
+          >
             <h1>TBEP Action Plan Database</h1>
             <p>
               Please enter a new project by entering the information requested
@@ -96,9 +111,13 @@
 
         <!-- Report New Project Section -->
         <section id="new-project">
-          <div class="report-section">
-            <h2>Report new project</h2>
-            <p>
+          <div
+            class="report-section"
+            id="new-project-instructions"
+            tabindex="0"
+          >
+            <h2 id="new-project-heading">Report new project</h2>
+            <p id="new-project-description">
               Please enter a new project by entering the information requested
               on the form below. For education or ongoing projects such as
               sweeping, you should create a new project for every new year the
@@ -116,9 +135,9 @@
                       width="600"
                       height="1200"
                       src="https://app.smartsheet.com/b/form/98c3743ceec54fd4be1e9a4a23e148cd"
+                      title="Smartsheet Form"
+                      loading="lazy"
                     >
-                      title="Smartsheet Form" aria-label="Smartsheet Form"
-                      loading="lazy" role="document" >
                       <p>
                         Your browser does not support iframes. Please
                         <a
@@ -135,9 +154,9 @@
             </div>
             <div class="calculator-container">
               <div class="card">
-                <div class="calculator-content">
-                  <h2>TN estimation load calculator</h2>
-                  <p class="calculator-description">
+                <div class="calculator-content" tabindex="0">
+                  <h2 id="calculator-heading">TN estimation load calculator</h2>
+                  <p class="calculator-description" id="calculator-description">
                     Only use this tool if you don't already have a TN estimation
                     number. Where in doubt, refer to your own data.
                   </p>
@@ -147,7 +166,8 @@
                 <div
                   class="calculator-form"
                   role="region"
-                  aria-label="TN Load Calculator"
+                  aria-labelledby="calculator-heading"
+                  aria-describedby="calculator-description"
                 >
                   <ul
                     class="nav nav-tabs"
@@ -195,12 +215,6 @@
                       aria-labelledby="nps-tab"
                       tabindex="0"
                     >
-                      <button
-                        class="visually-hidden calculator-return-to-tabs"
-                        aria-label="Return to calculator type selection"
-                      >
-                        Return to calculator tabs
-                      </button>
                       <form
                         id="nps-calculator-form"
                         aria-label="Non-Point Source Calculator Form"
@@ -214,8 +228,8 @@
                             id="npsLandUse"
                             name="npsLandUse"
                             required
-                            aria-labelledby="npsLandUseLabel"
                             aria-describedby="npsLandUseHelp"
+                            autocomplete="off"
                           >
                             <option value="">Select Land Use</option>
                           </select>
@@ -235,8 +249,8 @@
                             id="npsTreatmentMethod"
                             name="npsTreatmentMethod"
                             required
-                            aria-labelledby="npsTreatmentMethodLabel"
                             aria-describedby="npsTreatmentMethodHelp"
+                            autocomplete="off"
                           >
                             <option value="">Select Treatment Method</option>
                           </select>
@@ -258,7 +272,6 @@
                             step="0.01"
                             min="0"
                             required
-                            aria-labelledby="npsTreatmentAreaLabel"
                             aria-describedby="npsTreatmentAreaHelp"
                             title="Enter the treatment area in acres. Decimal values are allowed."
                           />
@@ -284,12 +297,6 @@
                       aria-labelledby="ps-tab"
                       tabindex="0"
                     >
-                      <button
-                        class="visually-hidden calculator-return-to-tabs"
-                        aria-label="Return to calculator type selection"
-                      >
-                        Return to calculator tabs
-                      </button>
                       <form
                         id="ps-calculator-form"
                         aria-label="Point Source Calculator Form"
@@ -306,7 +313,6 @@
                             step="0.01"
                             min="0"
                             required
-                            aria-labelledby="psAvgDischargeLabel"
                             aria-describedby="psAvgDischargeHelp"
                             title="Enter the average total discharge in Million Gallons per Day (MGD). Decimal values are allowed."
                           />
@@ -332,7 +338,6 @@
                             step="0.01"
                             min="0"
                             required
-                            aria-labelledby="psTNConcentrationLabel"
                             aria-describedby="psTNConcentrationHelp"
                             title="Enter the Total Nitrogen concentration in milligrams per liter (mg/L). Decimal values are allowed."
                           />
@@ -360,7 +365,6 @@
                               min="0"
                               max="100"
                               required
-                              aria-labelledby="psAttenuationFactorLabel"
                               aria-describedby="psAttenuationFactorHelp"
                               title="Enter the attenuation factor as a percentage (0-100). Decimal values are allowed."
                             />
@@ -400,9 +404,20 @@
 
         <!-- Existing Projects Section -->
         <section id="existing-projects" class="mb-5">
-          <div class="report-section">
-            <h2>Existing Projects</h2>
-            <p>
+          <div
+            class="report-section"
+            id="existing-projects-instructions"
+            tabindex="0"
+          >
+            <div class="sr-only" aria-live="polite">
+              Note: This section contains a Smartsheet table that is not fully
+              accessible due to platform limitations. The table is hidden from
+              keyboard navigation to prevent keyboard traps. If you need
+              assistance accessing this information, please contact TBEP for
+              support.
+            </div>
+            <h2 id="existing-projects-heading">Update existing project</h2>
+            <p id="existing-projects-description">
               To update an existing project, please locate your project number
               in the list below. Once found, you can request access to edit the
               project and submit your changes. For education or ongoing
@@ -416,22 +431,18 @@
                 <li>Request access to edit</li>
                 <li>Receive email and submit your change</li>
               </ol>
+
               <div class="iframe-container reports-container">
-                <button
-                  class="visually-hidden iframe-escape"
-                  aria-label="Exit iframe section"
-                >
-                  Exit iframe section
-                </button>
                 <iframe
+                  class="smartsheet-reports-iframe"
                   width="1000"
                   height="700"
                   frameborder="0"
                   src="https://app.smartsheet.com/b/publish?EQBCT=59d2be9b3bbf492882b62ba57d8420b7"
                   title="Smartsheet Reports View"
-                  aria-label="Smartsheet Reports View"
                   loading="lazy"
-                  role="document"
+                  tabindex="-1"
+                  aria-hidden="true"
                 >
                   <p>
                     Your browser does not support iframes. Please
@@ -449,20 +460,12 @@
           <div class="card">
             <div class="card-body">
               <div class="iframe-container">
-                <button
-                  class="visually-hidden iframe-escape"
-                  aria-label="Exit iframe section"
-                >
-                  Exit iframe section
-                </button>
                 <iframe
                   width="1000"
                   height="700"
                   src="https://app.smartsheet.com/b/form/0e2dfc54698e4ddf90ff0ae90e969a69"
                   title="Smartsheet Form"
-                  aria-label="Smartsheet Form"
                   loading="lazy"
-                  role="document"
                 >
                   <p>
                     Your browser does not support iframes. Please
@@ -480,10 +483,18 @@
         </section>
 
         <!-- TN Allocation Transfer Section -->
-        <section id="tn-allocation" class="mb-5">
-          <div class="report-section">
-            <h2>Report TN Allocation Transfer</h2>
-            <p>
+        <section
+          id="tn-allocation"
+          aria-labelledby="tn-allocation-heading"
+          class="mb-5"
+        >
+          <div
+            class="report-section"
+            id="tn-allocation-instructions"
+            tabindex="0"
+          >
+            <h2 id="tn-allocation-heading">Report TN allocation transfer</h2>
+            <p id="tn-allocation-description">
               Use this form to report transfers of TN allocation between
               entities. Please ensure you have all necessary documentation and
               approval before submitting the transfer request. Both the sending
@@ -493,20 +504,12 @@
           <div class="card">
             <div class="card-body">
               <div class="iframe-container reports-container">
-                <button
-                  class="visually-hidden iframe-escape"
-                  aria-label="Exit iframe section"
-                >
-                  Exit iframe section
-                </button>
                 <iframe
                   width="900"
                   height="600"
                   src="https://app.smartsheet.com/b/form/8918f2ed52e04edf828bd22b5ce72850"
                   title="TN Allocation Transfer Form"
-                  aria-label="TN Allocation Transfer Form"
                   loading="lazy"
-                  role="document"
                 >
                   <p>
                     Your browser does not support iframes. Please
@@ -525,7 +528,7 @@
       </div>
     </main>
 
-    <footer class="footer">
+    <footer class="footer" role="contentinfo">
       <div class="content-container">
         <p>&copy; 2024 TBEP Action Plan Database. All rights reserved.</p>
       </div>
@@ -552,6 +555,24 @@
             },
           });
         });
+      });
+
+      // Focus the correct instruction container when a nav link is clicked
+      document.addEventListener("DOMContentLoaded", function () {
+        document
+          .querySelectorAll(".nav-link[data-instruction-target]")
+          .forEach(function (link) {
+            link.addEventListener("click", function (e) {
+              var targetId = link.getAttribute("data-instruction-target");
+              var instruction = document.getElementById(targetId);
+              if (instruction) {
+                // Wait for scroll, then focus
+                setTimeout(function () {
+                  instruction.focus();
+                }, 300);
+              }
+            });
+          });
       });
     </script>
   </body>
