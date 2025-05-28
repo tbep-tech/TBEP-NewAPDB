@@ -4,12 +4,12 @@
   --secondary-color: #0066cc;
   --text-color: #333333;
   --light-gray: #f5f5f5;
-  --navbar-bg: #ffffff;
-  --navbar-text: #000000;
+  --navbar-bg: var(--color-background-default);
+  --navbar-text: var(--color-content-default);
   --footer-bg: #398376;
   --color-background-transparent-strong: rgba(0, 0, 0, 0.9);
-  --color-content-knockout: #feffff;
-  --button-primary-color-content-default: hsl(216, 89%, 100%);
+  --color-content-knockout: var(--color-white-solid);
+  --button-primary-color-content-default: var(--color-white-solid);
   --typography-title-default-font-family: Rubik;
   --typography-title-default-font-size: 2rem;
   --typography-title-default-font-weight: 600;
@@ -52,9 +52,187 @@
   --z-index-modal: 30;
   --z-index-tooltip: 40;
   --z-index-skip-link: 50;
-  --color-border-default-hover: #8a9494;
-  --color-background-subtle: #f5f7f7;
-  --color-content-default-hover: #1a1f1f;
+  --color-border-default-hover: #6b7373;
+  --color-background-subtle: #e8eded;
+  --color-content-default-hover: #111;
+  --color-background-default: #feffff;
+  --color-content-subtle: #646b76;
+  --button-primary-color-background-default: #065996;
+  --button-primary-color-background-hover: #033b66;
+  --button-primary-color-border-default: #065996;
+  --button-primary-color-border-hover: #033b66;
+  --button-color-background-default: var(--color-white-solid);
+  --button-color-background-hover: var(--color-white-solid);
+  --button-color-content-default: #065996;
+  --button-color-content-hover: #033b66;
+  --color-background-utility-info: #dbefff;
+  --color-border-utility-info: #0088e5;
+}
+
+/* Dark Mode Variables */
+:root[data-theme="dark"] {
+  /* Base colors */
+  --primary-color: #4dabf7;
+  --secondary-color: #339af0;
+  --text-color: #e9ecef;
+  --light-gray: #343a40;
+  --navbar-bg: #212529;
+  --navbar-text: #ffffff;
+  --footer-bg: #2c3e50;
+
+  /* Background colors */
+  --color-background-default: #121212;
+  --color-background-subtle: #1e1e1e;
+  --color-background-transparent-strong: rgba(33, 37, 41, 0.9);
+  --color-content-knockout: #e9ecef;
+
+  /* Text colors */
+  --color-content-default: #e9ecef;
+  --color-content-subtle: #adb5bd;
+  --color-content-default-hover: #f8f9fa;
+
+  /* Border colors */
+  --color-border-default: #495057;
+  --color-border-default-hover: #6c757d;
+
+  /* Button colors */
+  --button-primary-color-background-default: #339af0;
+  --button-primary-color-background-hover: #228be6;
+  --button-primary-color-border-default: #339af0;
+  --button-primary-color-border-hover: #228be6;
+  --button-primary-color-content-default: #ffffff;
+  --button-color-background-default: #343a40;
+  --button-color-background-hover: #495057;
+  --button-color-content-default: #e9ecef;
+  --button-color-content-hover: #f8f9fa;
+  --button-primary-color-background-active: #228be6;
+  --button-primary-color-border-active: #228be6;
+  --button-primary-color-content-active: #ffffff;
+
+  /* Focus ring */
+  --focus-ring-color: #339af0;
+
+  /* Calculator specific colors */
+  --color-background-utility-info: #1a3b5c;
+  --color-border-utility-info: #339af0;
+}
+
+/* Dark Mode Overrides */
+/* Important overrides for Bootstrap */
+:root[data-theme="dark"] body {
+  background-color: var(--color-background-default) !important;
+  color: var(--text-color) !important;
+}
+
+:root[data-theme="dark"] .card {
+  background-color: var(--color-background-subtle) !important;
+  border-color: var(--color-border-default) !important;
+}
+
+:root[data-theme="dark"] .form-control,
+:root[data-theme="dark"] .form-select {
+  background-color: var(--color-background-subtle) !important;
+  border-color: var(--color-border-default) !important;
+  color: var(--text-color) !important;
+}
+
+:root[data-theme="dark"] .form-control:focus,
+:root[data-theme="dark"] .form-select:focus {
+  background-color: var(--color-background-subtle) !important;
+  border-color: var(--focus-ring-color) !important;
+  color: var(--text-color) !important;
+}
+
+/* Calculator text styles */
+:root[data-theme="dark"] .calculator-content h2,
+:root[data-theme="dark"] .calculator-content p,
+:root[data-theme="dark"] .calculator-description {
+  color: var(--text-color) !important;
+}
+
+/* Tab styles for dark mode */
+:root[data-theme="dark"]
+  .calculator-form
+  .nav-tabs
+  .nav-link:not(.active):hover {
+  background: var(--color-background-default);
+  color: var(--color-content-default);
+  border-color: var(--color-border-default-hover);
+  border-bottom: 1px solid var(--color-border-default-hover);
+}
+
+:root[data-theme="dark"] .calculator-form .nav-tabs .nav-link.active {
+  background: var(--color-background-subtle);
+  color: var(--color-content-default);
+  border-color: var(--color-border-default);
+  border-bottom-color: var(--color-background-subtle);
+}
+
+/* Dropdown chevron dark mode styles */
+:root[data-theme="dark"] .form-select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23e9ecef' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e");
+}
+
+:root[data-theme="dark"] .choices[data-type*="select-one"]:after {
+  border-color: var(--text-color) transparent transparent;
+}
+
+/* Theme toggle button */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: none;
+  border: none;
+  color: var(--button-primary-color-content-default);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: opacity 0.2s ease;
+}
+
+.theme-toggle:hover {
+  opacity: 0.8;
+}
+
+.theme-toggle svg {
+  width: 1.25rem;
+  height: 1.25rem;
+}
+
+/* Theme toggle icons */
+.sun-icon,
+.moon-icon {
+  transition: opacity 0.2s ease;
+}
+
+.sun-icon {
+  display: block;
+}
+
+.moon-icon {
+  display: none;
+}
+
+:root[data-theme="dark"] .sun-icon {
+  display: none;
+}
+
+:root[data-theme="dark"] .moon-icon {
+  display: block;
+}
+
+/* Keep theme toggle visible in mobile menu */
+@media (max-width: 1330px) {
+  .theme-toggle {
+    display: flex;
+    margin-left: auto;
+    margin-right: 1rem;
+  }
+
+  .nav-links.active .theme-toggle {
+    display: flex;
+  }
 }
 
 /* Apply Rubik to all elements */
@@ -90,8 +268,7 @@ li,
 body {
   color: var(--text-color);
   line-height: 1.6;
-  background: var(--color-background-default, #feffff);
-  background: var(--color-background-default, color(display-p3 0.9961 1 1));
+  background: var(--color-background-default);
   margin: 0;
   padding: 0;
   overflow-x: hidden;
@@ -126,7 +303,12 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 0.5rem 0;
-  background: var(--color-background-transparent-strong, rgba(0, 0, 0, 0.9));
+  background: var(--color-background-transparent-strong);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: var(--z-index-header);
 }
 
 .navbar .content-container {
@@ -134,6 +316,8 @@ body {
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  padding: 0 var(--content-padding);
+  box-sizing: border-box;
 }
 
 /* Navbar Brand */
@@ -142,8 +326,7 @@ body {
 .navbar .navbar-brand {
   width: auto;
   flex-shrink: 0;
-  color: var(--color-content-knockout, #feffff);
-  color: var(--color-content-knockout, color(display-p3 0.9961 1 1));
+  color: var(--color-content-knockout);
 
   /* Nav bar title */
   font-family: var(--typography-title-default-font-family, Rubik);
@@ -161,8 +344,7 @@ body {
 .navbar-brand:hover,
 .navbar-dark .navbar-brand:hover,
 .navbar .navbar-brand:hover {
-  color: var(--color-content-knockout, #feffff);
-  color: var(--color-content-knockout, color(display-p3 0.9961 1 1));
+  color: var(--color-content-knockout);
 }
 
 /* Main content wrapper */
@@ -210,11 +392,8 @@ h2[tabindex="0"]:focus {
 /* Card styles */
 .card {
   border-radius: 0.375rem;
-  border: var(--stroke-weight-1, 1px) solid var(--color-border-default, #afbbbb);
-  border: var(--stroke-weight-1, 1px) solid
-    var(--color-border-default, color(display-p3 0.702 0.7333 0.7333));
+  border: var(--stroke-weight-1) solid var(--color-border-default);
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.1);
-  box-shadow: 0px 2px 4px 0px color(display-p3 0 0 0 / 0.1);
   margin-bottom: 2rem;
 }
 
@@ -291,7 +470,12 @@ h2[tabindex="0"]:focus {
 .skeleton-loader .header,
 .skeleton-loader .line {
   background: #e0e0e0;
-  background: linear-gradient(110deg, #ececec 8%, #f5f5f5 18%, #ececec 33%);
+  background: linear-gradient(
+    110deg,
+    #ececec 8%,
+    var(--light-gray) 18%,
+    #ececec 33%
+  );
   border-radius: 4px;
   background-size: 200% 100%;
   animation: shimmer 1.5s linear infinite;
@@ -367,20 +551,21 @@ h2[tabindex="0"]:focus {
 }
 
 .form-control {
-  border: 1px solid #ddd;
+  border: 1px solid var(--color-border-default);
   border-radius: 4px;
   padding: 0.5rem;
   max-width: 100%;
 }
 
 .btn-primary {
-  background-color: var(--button-primary-color-background-default, #065996);
-  border-color: var(--button-primary-color-border-default, #065996);
+  background-color: var(--button-primary-color-background-default);
+  border-color: var(--button-primary-color-border-default);
+  color: var(--color-white-solid);
 }
 
 .btn-primary:hover {
-  background-color: var(--button-primary-color-background-hover, #033b66);
-  border-color: var(--button-primary-color-border-hover, #033b66);
+  background-color: var(--button-primary-color-background-hover);
+  border-color: var(--button-primary-color-border-hover);
 }
 
 /* Calculator Result */
@@ -465,10 +650,10 @@ h2[tabindex="0"]:focus {
 /* Copy Value Button */
 .copy-value {
   padding: 0.5rem 1rem;
-  background-color: var(--color-background-default);
-  border: 1px solid var(--color-border-default);
+  background-color: var(--button-color-background-default);
+  border: 1px solid var(--button-primary-color-border-default);
   border-radius: 0.375rem;
-  color: var(--color-content-default);
+  color: var(--button-color-content-default);
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s ease-in-out;
@@ -476,8 +661,9 @@ h2[tabindex="0"]:focus {
 }
 
 .copy-value:hover {
-  background-color: var(--color-background-subtle);
-  border-color: var(--color-border-default-hover);
+  background-color: var(--button-color-background-hover);
+  border-color: var(--button-primary-color-border-hover);
+  color: var(--button-color-content-hover);
 }
 
 .copy-value:focus-visible {
@@ -487,9 +673,9 @@ h2[tabindex="0"]:focus {
 }
 
 .copy-value.active {
-  background-color: var(--color-background-subtle);
-  border-color: var(--color-border-default-hover);
-  color: var(--color-content-default-hover);
+  background-color: var(--button-primary-color-background-active);
+  border-color: var(--button-primary-color-border-active);
+  color: var(--button-primary-color-content-active);
 }
 
 /* Remove old alert styles */
@@ -568,42 +754,35 @@ h2[tabindex="0"]:focus {
 }
 
 /* Hamburger Menu Button */
-.hamburger-menu {
-  display: none;
-  background: none;
+.menu-button {
+  display: none; /* Hide by default */
+  grid-column-gap: 0.1875em;
+  grid-row-gap: 0.1875em;
+  flex-flow: column;
+  padding: 1em;
+  font-size: 1em;
+  background: transparent;
+  -webkit-appearance: none;
   border: none;
-  padding: 0.5rem;
-  cursor: pointer;
-  color: var(--button-primary-color-content-default);
-  margin-left: 1rem;
 }
 
-.hamburger-menu .bar {
-  display: block;
-  width: 1.5625rem;
-  height: 0.1875rem;
-  margin: 0.3125rem auto;
-  background-color: var(--button-primary-color-content-default);
-  transition: all 0.3s ease-in-out;
-}
-
-/* Close button styles */
-.close-menu {
-  display: none;
-  font-size: 1.5rem;
-  padding: 0.5rem;
+.menu-button-line {
+  background-color: var(--color-white-solid);
+  width: 2em;
+  height: 0.1875em;
 }
 
 /* Mobile Menu */
-@media (max-width: 1330px) {
-  .hamburger-menu {
-    display: block;
+@media (max-width: 1440px) {
+  .menu-button {
+    display: flex !important; /* Force display on mobile */
+    margin-left: 1rem;
   }
 
   .nav-links {
     display: none;
     position: fixed;
-    top: 0;
+    top: 4rem; /* Start under the navbar */
     right: 0;
     width: auto;
     min-width: 12.5rem;
@@ -618,6 +797,7 @@ h2[tabindex="0"]:focus {
     gap: 1rem;
     z-index: var(--z-index-mobile-nav);
     border-radius: 0 0 0 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
 
   .nav-links.active {
@@ -633,48 +813,15 @@ h2[tabindex="0"]:focus {
     justify-content: flex-start;
   }
 
-  /* Close Menu Button */
-  .close-menu {
-    display: block;
-    position: absolute;
-    top: 0.5rem;
-    right: 0.5rem;
-    background: none;
-    border: none;
-    color: var(--button-primary-color-content-default);
-    font-size: 1.5rem;
-    cursor: pointer;
-    padding: 0.5rem;
-    line-height: 1;
-  }
-
-  .close-menu:hover {
-    opacity: 0.8;
-  }
-
-  /* Hamburger Animation */
-  .hamburger-menu.active .bar:nth-child(1) {
-    transform: translateY(8px) rotate(45deg);
-  }
-
-  .hamburger-menu.active .bar:nth-child(2) {
-    opacity: 0;
-  }
-
-  .hamburger-menu.active .bar:nth-child(3) {
-    transform: translateY(-8px) rotate(-45deg);
-  }
-
   /* Ensure content container maintains flex layout in mobile */
   .navbar .content-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    width: 100%;
   }
 
-  .navbar-brand,
-  .navbar-dark .navbar-brand,
-  .navbar .navbar-brand {
+  .navbar-brand {
     font-size: var(--typography-title-sm-font-size, 1.5rem);
     line-height: var(--typography-title-sm-line-height, 2rem);
   }
@@ -742,7 +889,7 @@ h2[tabindex="0"]:focus {
 
 @media (max-width: 480px) {
   .navbar {
-    padding: 0.5rem 0.75rem;
+    padding: 0.5rem var(--content-padding);
   }
 
   .navbar-brand {
@@ -751,7 +898,8 @@ h2[tabindex="0"]:focus {
   }
 
   .container {
-    padding: 0 0.75rem;
+    padding: 0 var(--content-padding);
+    width: 100%;
   }
 
   .card {
@@ -779,11 +927,11 @@ h2[tabindex="0"]:focus {
 
 /* Footer Styles */
 .footer {
-  background: var(--color-background-transparent-strong, rgba(0, 0, 0, 0.9));
+  background: var(--color-background-transparent-strong);
   backdrop-filter: blur(40.2px);
   padding: 1.5rem 0;
   margin-top: 2rem;
-  color: #ffffff;
+  color: var(--color-white-solid);
   font-weight: 300;
   font-size: 1rem;
   width: 100%;
@@ -797,7 +945,7 @@ h2[tabindex="0"]:focus {
 
 .footer p {
   margin: 0;
-  color: #ffffff;
+  color: var(--color-white-solid);
 }
 
 /* Accessibility */
@@ -830,24 +978,9 @@ h2[tabindex="0"]:focus {
 
   /* Default state */
   border-radius: 0.375rem;
-  border: 1px solid var(--button-primary-color-border-default, #065996);
-  border: 1px solid
-    var(
-      --button-primary-color-border-default,
-      color(display-p3 0.2008 0.3394 0.5513)
-    );
-  background: var(--button-color-background-default, #feffff);
-  background: var(
-    --button-color-background-default,
-    color(display-p3 0.9961 1 1)
-  );
-
-  /* Text styles */
-  color: var(--button-color-content-default, #065996);
-  color: var(
-    --button-color-content-default,
-    color(display-p3 0.2008 0.3394 0.5513)
-  );
+  border: 1px solid var(--button-primary-color-border-default);
+  background: var(--button-color-background-default);
+  color: var(--button-color-content-default);
   text-align: center;
   font-family: var(--font-family-Font-1, Rubik);
   font-size: var(--font-size-16, 1rem);
@@ -868,50 +1001,17 @@ h2[tabindex="0"]:focus {
 
 /* Hover state */
 .copy-value:hover {
-  border: 1px solid var(--button-primary-color-border-hover, #033b66);
-  border: 1px solid
-    var(
-      --button-primary-color-border-hover,
-      color(display-p3 0.1251 0.2246 0.3766)
-    );
-  background: var(--button-color-background-hover, #feffff);
-  background: var(
-    --button-color-background-hover,
-    color(display-p3 0.9961 1 1)
-  );
-  color: var(--button-color-content-hover, #033b66);
-  color: var(
-    --button-color-content-hover,
-    color(display-p3 0.1251 0.2246 0.3766)
-  );
+  border: 1px solid var(--button-primary-color-border-hover);
+  background: var(--button-color-background-hover);
+  color: var(--button-color-content-hover);
 }
 
 /* Active/Copied state */
 .copy-value.active {
   border-radius: 0.375rem;
-  border: 1px solid var(--button-primary-color-border-active, #033b66);
-  border: 1px solid
-    var(
-      --button-primary-color-border-active,
-      color(display-p3 0.1251 0.2246 0.3766)
-    );
-  background: var(--button-primary-color-background-active, #033b66);
-  background: var(
-    --button-primary-color-background-active,
-    color(display-p3 0.1251 0.2246 0.3766)
-  );
-
-  color: var(--button-primary-color-content-active, #dbefff);
-  color: var(
-    --button-primary-color-content-active,
-    color(display-p3 0.8846 0.9302 0.9976)
-  );
-  text-align: center;
-  font-family: var(--font-family-Font-1, Rubik);
-  font-size: var(--font-size-16, 1rem);
-  font-style: normal;
-  font-weight: var(--font-weight-400, 400);
-  line-height: var(--line-height-24, 1.5rem);
+  border: 1px solid var(--button-primary-color-border-active);
+  background: var(--button-primary-color-background-active);
+  color: var(--button-primary-color-content-active);
 }
 
 /* Override any Bootstrap styles */
@@ -932,22 +1032,9 @@ h2[tabindex="0"]:focus {
 /* Ensure the button inherits the correct styles even with Bootstrap */
 .copy-value.btn {
   border-radius: 0.375rem;
-  border: 1px solid var(--button-primary-color-border-default, #065996);
-  border: 1px solid
-    var(
-      --button-primary-color-border-default,
-      color(display-p3 0.2008 0.3394 0.5513)
-    );
-  background: var(--button-color-background-default, #feffff);
-  background: var(
-    --button-color-background-default,
-    color(display-p3 0.9961 1 1)
-  );
-  color: var(--button-color-content-default, #065996);
-  color: var(
-    --button-color-content-default,
-    color(display-p3 0.2008 0.3394 0.5513)
-  );
+  border: 1px solid var(--button-primary-color-border-default);
+  background: var(--button-color-background-default);
+  color: var(--button-color-content-default);
   text-align: center;
   font-family: var(--font-family-Font-1, Rubik);
   font-size: var(--font-size-16, 1rem);
@@ -958,15 +1045,15 @@ h2[tabindex="0"]:focus {
 
 /* Override Bootstrap's alert button styles */
 .alert .copy-value {
-  background: var(--button-color-background-default, #feffff);
-  border: 1px solid var(--button-primary-color-border-default, #065996);
-  color: var(--button-color-content-default, #065996);
+  background: var(--button-color-background-default);
+  border: 1px solid var(--button-primary-color-border-default);
+  color: var(--button-color-content-default);
 }
 
 .alert .copy-value.active {
-  background: var(--button-primary-color-background-active, #033b66);
-  border: 1px solid var(--button-primary-color-border-active, #033b66);
-  color: var(--button-primary-color-content-active, #dbefff);
+  background: var(--button-primary-color-background-active);
+  border: 1px solid var(--button-primary-color-border-active);
+  color: var(--button-primary-color-content-active);
 }
 
 /* Add some spacing between form sections */
@@ -1225,7 +1312,7 @@ h2[tabindex="0"]:focus {
   min-height: 40px;
 }
 
-/* Individual Tab Link */
+/* Base Tab Styles */
 .calculator-form .nav-tabs .nav-link {
   display: flex;
   padding: 0.5rem 1rem;
@@ -1234,10 +1321,7 @@ h2[tabindex="0"]:focus {
   height: 40px;
   gap: 0.625rem;
   border: 1px solid var(--color-border-default);
-  border-bottom: none;
   border-radius: 0.375rem 0.375rem 0 0;
-  background: var(--color-background-default);
-  color: var(--color-content-subtle);
   text-align: center;
   position: relative;
   margin-right: -1px;
@@ -1245,43 +1329,82 @@ h2[tabindex="0"]:focus {
   white-space: nowrap;
   cursor: pointer;
   text-decoration: none;
-
-  /* Body text */
   font-family: var(--typography-display-default-font-family, Rubik);
   font-size: var(--typography-body-default-font-size, 1rem);
   font-style: normal;
   font-weight: 400;
   line-height: var(--typography-body-default-line-height, 1.5rem);
   letter-spacing: var(--typography-body-default-letter-spacing, 0rem);
+  pointer-events: auto;
+  z-index: var(--z-index-base);
+  width: fit-content; /* Use fit-content instead of fixed width */
+  min-width: max-content; /* Ensure content doesn't wrap */
 }
 
-/* Tab Hover State */
-.calculator-form .nav-tabs .nav-link:hover:not(.active) {
-  border-color: var(--color-border-default-hover);
+/* Inactive Tab Styles */
+.calculator-form .nav-tabs .nav-link:not(.active) {
+  background: var(--color-background-default);
+  color: var(--color-content-subtle);
+  border-bottom: 1px solid var(--color-border-default);
+  margin-bottom: -1px;
+  pointer-events: auto;
+  z-index: var(--z-index-base);
+  font-weight: 400; /* Ensure consistent font weight */
+}
+
+/* Inactive Tab Hover State (Light Mode) */
+:root:not([data-theme="dark"])
+  .calculator-form
+  .nav-tabs
+  .nav-link:not(.active):hover {
   background: var(--color-background-subtle);
   color: var(--color-content-default-hover);
+  border-color: var(--color-border-default-hover);
+  border-bottom: 1px solid var(--color-border-default-hover);
+  pointer-events: auto;
+  z-index: var(--z-index-above);
 }
 
-/* Active Tab */
+/* Active Tab Styles */
 .calculator-form .nav-tabs .nav-link.active {
-  color: var(--color-content-default) !important;
+  color: var(--color-content-default);
   background: var(--color-background-default);
   border-color: var(--color-border-default);
   border-bottom-color: var(--color-background-default);
   margin-bottom: -1px;
-  z-index: 1;
+  z-index: var(--z-index-above);
   font-weight: 600;
+  pointer-events: auto;
 }
 
-/* Tab Focus Styles */
-.calculator-form .nav-tabs .nav-link:focus-visible {
-  outline: 3px solid var(--focus-ring-color);
-  outline-offset: 2px;
-  border-radius: 4px 4px 0 0;
-  position: relative;
-  z-index: 2;
+/* Dark Mode Tab Styles */
+:root[data-theme="dark"] .calculator-form .nav-tabs .nav-link:not(.active) {
   background: var(--color-background-subtle);
-  color: var(--color-content-default-hover);
+  color: var(--color-content-subtle);
+  border-bottom: 1px solid var(--color-border-default);
+  pointer-events: auto;
+  z-index: var(--z-index-base);
+}
+
+:root[data-theme="dark"]
+  .calculator-form
+  .nav-tabs
+  .nav-link:not(.active):hover {
+  background: var(--color-background-default);
+  color: var(--color-content-default);
+  border-color: var(--color-border-default-hover);
+  border-bottom: 1px solid var(--color-border-default-hover);
+  pointer-events: auto;
+  z-index: var(--z-index-above);
+}
+
+:root[data-theme="dark"] .calculator-form .nav-tabs .nav-link.active {
+  background: var(--color-background-subtle);
+  color: var(--color-content-default);
+  border-color: var(--color-border-default);
+  border-bottom-color: var(--color-background-subtle);
+  pointer-events: auto;
+  z-index: var(--z-index-above);
 }
 
 /* Tab Content Area */
@@ -1865,4 +1988,11 @@ input[type="number"] {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+
+/* Dark Mode Copy Button Active State */
+:root[data-theme="dark"] .copy-value.active {
+  background: var(--button-primary-color-background-active);
+  border-color: var(--button-primary-color-border-active);
+  color: var(--button-primary-color-content-active);
 }

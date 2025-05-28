@@ -8,6 +8,119 @@ const smartsheetConfig = {
   apiKey: "YOUR_API_KEY", // Replace this with your actual API key
 };
 
+// Hamburger Menu Functionality
+gsap.registerPlugin(CustomEase);
+CustomEase.create("button-ease", "0.5, 0.05, 0.05, 0.99");
+
+function initMenuButton() {
+  // Select elements
+  const menuButton = document.querySelector("[data-menu-button]");
+  const navLinks = document.querySelector(".nav-links");
+  const navLinksItems = document.querySelectorAll(".nav-link");
+  const lines = document.querySelectorAll(".menu-button-line");
+  const [line1, line2, line3] = lines;
+
+  console.log("Menu button elements:", {
+    menuButton,
+    navLinks,
+    navLinksItems,
+    lines,
+  });
+
+  // Define one global timeline
+  let menuButtonTl = gsap.timeline({
+    defaults: {
+      overwrite: "auto",
+      ease: "button-ease",
+      duration: 0.3,
+    },
+  });
+
+  const menuOpen = () => {
+    console.log("Opening menu");
+    menuButtonTl
+      .clear() // Stop any previous tweens, if any
+      .to(line2, { scaleX: 0, opacity: 0 }) // Step 1: Hide middle line
+      .to(line1, { x: "-1.3em", opacity: 0 }, "<") // Step 1: Move top line
+      .to(line3, { x: "1.3em", opacity: 0 }, "<") // Step 1: Move bottom line
+      .to([line1, line3], { opacity: 0, duration: 0.1 }, "<+=0.2") // Step 2: Quickly fade top and bottom lines
+      .set(line1, { rotate: -135, y: "-1.3em", scaleX: 0.9 }) // Step 3: Instantly rotate and scale top line
+      .set(line3, { rotate: 135, y: "-1.4em", scaleX: 0.9 }, "<") // Step 3: Instantly rotate and scale bottom line
+      .to(line1, { opacity: 1, x: "0em", y: "0.5em" }) // Step 4: Move top line to final position
+      .to(line3, { opacity: 1, x: "0em", y: "-0.25em" }, "<+=0.1"); // Step 4: Move bottom line to final position
+  };
+
+  const menuClose = () => {
+    console.log("Closing menu");
+    menuButtonTl
+      .clear() // Stop any previous tweens, if any
+      .to([line1, line2, line3], {
+        // Move all lines back in a different animation
+        scaleX: 1,
+        rotate: 0,
+        x: "0em",
+        y: "0em",
+        opacity: 1,
+        duration: 0.45,
+        overwrite: "auto",
+      });
+  };
+
+  function toggleMenu() {
+    console.log("Toggling menu");
+    const isActive = navLinks.classList.contains("active");
+    navLinks.classList.toggle("active");
+    menuButton.setAttribute("aria-expanded", !isActive);
+
+    const currentState = menuButton.getAttribute("data-menu-button");
+    if (currentState === "burger") {
+      menuOpen();
+      menuButton.setAttribute("data-menu-button", "close");
+    } else {
+      menuClose();
+      menuButton.setAttribute("data-menu-button", "burger");
+    }
+  }
+
+  // Toggle Animation and Menu
+  menuButton.addEventListener("click", (e) => {
+    console.log("Menu button clicked");
+    e.preventDefault();
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  // Close menu when clicking a link
+  navLinksItems.forEach((link) => {
+    link.addEventListener("click", () => {
+      if (navLinks.classList.contains("active")) {
+        console.log("Nav link clicked, closing menu");
+        toggleMenu();
+      }
+    });
+  });
+
+  // Close menu when clicking outside
+  document.addEventListener("click", (e) => {
+    if (
+      navLinks.classList.contains("active") &&
+      !navLinks.contains(e.target) &&
+      !menuButton.contains(e.target)
+    ) {
+      console.log("Clicked outside, closing menu");
+      toggleMenu();
+    }
+  });
+
+  // Close menu on escape key
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && navLinks.classList.contains("active")) {
+      console.log("Escape key pressed, closing menu");
+      toggleMenu();
+    }
+  });
+}
+
 // Initialize Smartsheet iframes
 function initializeSmartsheetIframes() {
   const formContainer = document.getElementById("smartsheet-form");
@@ -653,46 +766,62 @@ document.addEventListener("DOMContentLoaded", () => {
       });
   });
 
-  // Hamburger Menu Functionality
-  const hamburger = document.querySelector(".hamburger-menu");
-  const navLinks = document.querySelector(".nav-links");
-  const navLinksItems = document.querySelectorAll(".nav-link");
-  const closeButton = document.querySelector(".close-menu");
+  // Initialize Burger Menu Button
+  initMenuButton();
 
-  function toggleMenu() {
-    hamburger.classList.toggle("active");
-    navLinks.classList.toggle("active");
-    const isExpanded = hamburger.getAttribute("aria-expanded") === "true";
-    hamburger.setAttribute("aria-expanded", !isExpanded);
+  // Theme handling
+  function setTheme(theme) {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+
+    // Update icon visibility
+    const sunIcon = document.querySelector(".sun-icon");
+    const moonIcon = document.querySelector(".moon-icon");
+
+    if (theme === "dark") {
+      sunIcon.style.display = "none";
+      moonIcon.style.display = "block";
+    } else {
+      sunIcon.style.display = "block";
+      moonIcon.style.display = "none";
+    }
   }
 
-  hamburger.addEventListener("click", toggleMenu);
-  closeButton.addEventListener("click", toggleMenu);
+  // Check for saved theme preference or use system preference
+  function initTheme() {
+    const savedTheme = localStorage.getItem("theme");
+    const prefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)"
+    ).matches;
 
-  // Close menu when clicking a link
-  navLinksItems.forEach((link) => {
-    link.addEventListener("click", () => {
-      if (navLinks.classList.contains("active")) {
-        toggleMenu();
+    if (savedTheme) {
+      setTheme(savedTheme);
+    } else {
+      setTheme(prefersDark ? "dark" : "light");
+    }
+  }
+
+  // Toggle theme
+  function toggleTheme() {
+    const currentTheme = document.documentElement.getAttribute("data-theme");
+    setTheme(currentTheme === "dark" ? "light" : "dark");
+  }
+
+  // Initialize theme on page load
+  initTheme();
+
+  // Add click handler to theme toggle button
+  const themeToggle = document.querySelector(".theme-toggle");
+  if (themeToggle) {
+    themeToggle.addEventListener("click", toggleTheme);
+  }
+
+  // Listen for system theme changes
+  window
+    .matchMedia("(prefers-color-scheme: dark)")
+    .addEventListener("change", (e) => {
+      if (!localStorage.getItem("theme")) {
+        setTheme(e.matches ? "dark" : "light");
       }
     });
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (
-      navLinks.classList.contains("active") &&
-      !navLinks.contains(e.target) &&
-      !hamburger.contains(e.target)
-    ) {
-      toggleMenu();
-    }
-  });
-
-  // Close menu on escape key
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && navLinks.classList.contains("active")) {
-      toggleMenu();
-    }
-  });
 });

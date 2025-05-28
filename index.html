@@ -15,6 +15,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="dark-mode.css" />
     <!-- Bootstrap CSS for responsive design -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
@@ -36,16 +37,17 @@
         <div class="content-container">
           <span class="navbar-brand">TBEP Action Plan Database</span>
           <button
-            class="hamburger-menu"
+            class="menu-button"
             aria-label="Toggle navigation menu"
             aria-expanded="false"
             aria-controls="nav-links"
+            data-menu-button="burger"
           >
-            <span class="bar" aria-hidden="true"></span>
-            <span class="bar" aria-hidden="true"></span>
+            <span class="menu-button-line"></span>
+            <span class="menu-button-line"></span>
+            <span class="menu-button-line"></span>
           </button>
           <div class="nav-links" id="nav-links">
-            <button class="close-menu" aria-label="Close menu">×</button>
             <a
               href="#new-project"
               class="nav-link"
@@ -70,6 +72,42 @@
               data-instruction-target="tn-allocation-instructions"
               >Report TN Allocation Transfer</a
             >
+            <button class="theme-toggle" aria-label="Toggle dark mode">
+              <svg
+                class="sun-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+              </svg>
+              <svg
+                class="moon-icon"
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <path
+                  d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"
+                ></path>
+              </svg>
+            </button>
           </div>
         </div>
       </nav>
@@ -222,9 +260,6 @@
                           >
                             <option value="">Select Land Use</option>
                           </select>
-                          <div id="npsLandUseHelp" class="form-text">
-                            Select the land use type for your project
-                          </div>
                         </div>
 
                         <div class="form-group">
@@ -243,9 +278,6 @@
                           >
                             <option value="">Select Treatment Method</option>
                           </select>
-                          <div id="npsTreatmentMethodHelp" class="form-text">
-                            Select the treatment method for your project
-                          </div>
                         </div>
                         <div class="form-group">
                           <label
@@ -265,13 +297,6 @@
                             title="Enter the treatment area in acres. Decimal values are allowed."
                             onblur="setTimeout(() => console.log('Next focused element:', document.activeElement), 0)"
                           />
-                          <div
-                            id="npsTreatmentAreaHelp"
-                            class="form-text visually-hidden"
-                          >
-                            Enter the treatment area in acres. Decimal values
-                            are allowed.
-                          </div>
                         </div>
                         <div class="form-group">
                           <button type="submit" class="btn btn-primary">
@@ -312,13 +337,6 @@
                             aria-describedby="psAvgDischargeHelp"
                             title="Enter the average total discharge in Million Gallons per Day (MGD). Decimal values are allowed."
                           />
-                          <div
-                            id="psAvgDischargeHelp"
-                            class="form-text visually-hidden"
-                          >
-                            Enter the average total discharge in Million Gallons
-                            per Day (MGD). Decimal values are allowed.
-                          </div>
                         </div>
                         <div class="form-group">
                           <label
@@ -337,13 +355,6 @@
                             aria-describedby="psTNConcentrationHelp"
                             title="Enter the Total Nitrogen concentration in milligrams per liter (mg/L). Decimal values are allowed."
                           />
-                          <div
-                            id="psTNConcentrationHelp"
-                            class="form-text visually-hidden"
-                          >
-                            Enter the Total Nitrogen concentration in milligrams
-                            per liter (mg/L). Decimal values are allowed.
-                          </div>
                         </div>
                         <div class="form-group">
                           <label
@@ -366,9 +377,6 @@
                             <span class="input-group-text" aria-hidden="true"
                               >%</span
                             >
-                          </div>
-                          <div id="psAttenuationFactorHelp" class="form-text">
-                            Enter a value between 0 and 100
                           </div>
                         </div>
                         <button type="submit" class="btn btn-primary">
@@ -408,12 +416,6 @@
           </div>
           <div class="card">
             <div class="card-body">
-              <ol>
-                <li>Find the project number</li>
-                <li>Request access to edit</li>
-                <li>Receive email and submit your change</li>
-              </ol>
-
               <div class="iframe-container reports-container">
                 <iframe
                   class="smartsheet-reports-iframe"
@@ -514,6 +516,8 @@
 
     <!-- Bootstrap JS and dependencies -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/CustomEase.min.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
     <script>
