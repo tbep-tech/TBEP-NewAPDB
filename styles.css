@@ -334,7 +334,6 @@ body {
   font-style: normal;
   font-weight: var(--typography-title-default-font-weight, 600);
   line-height: var(--typography-title-default-line-height, 3rem); /* 150% */
-  letter-spacing: var(--typography-title-default-letter-spacing, -0.0625rem);
   text-transform: uppercase;
   display: block;
   white-space: nowrap;
@@ -922,6 +921,22 @@ h2[tabindex="0"]:focus {
 
   :root {
     --content-padding: 0.75rem;
+  }
+
+  .calculator-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .calculator-container .card {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .calculator-content {
+    width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -1995,4 +2010,12 @@ input[type="number"] {
   background: var(--button-primary-color-background-active);
   border-color: var(--button-primary-color-border-active);
   color: var(--button-primary-color-content-active);
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--navbar-text);
+  text-decoration: none;
+  letter-spacing: 0.1em;
 }
