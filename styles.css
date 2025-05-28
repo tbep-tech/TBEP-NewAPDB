@@ -415,6 +415,7 @@ h2[tabindex="0"]:focus {
   border: 1px solid var(--color-border-utility-info, #0088e5);
   background: var(--color-background-utility-info, #dbefff);
   outline: none; /* Remove default focus outline */
+  margin-top: 1rem; /* Add spacing from the element above */
 }
 
 .calculator-result-container:focus {
@@ -435,7 +436,6 @@ h2[tabindex="0"]:focus {
 .result-content h4 {
   width: 100%;
   color: var(--color-content-default, #1a1f1f);
-  color: var(--color-content-default, color(display-p3 0.1098 0.1216 0.1216));
   font-family: var(--typography-title-sm-font-family, Rubik);
   font-size: var(--typography-title-sm-font-size, 1.5rem);
   font-style: normal;
@@ -1441,7 +1441,7 @@ h2[tabindex="0"]:focus {
 }
 
 /* Primary Button Styles */
-.calculator-form .btn-primary {
+.calculator-form .btn.btn-primary {
   display: inline-flex;
   padding: 0.5rem 1rem;
   justify-content: center;
@@ -1450,33 +1450,16 @@ h2[tabindex="0"]:focus {
 
   border-radius: 0.375rem;
   border: 1px solid var(--button-primary-color-border-default, #065996);
-  border: 1px solid
-    var(
-      --button-primary-color-border-default,
-      color(display-p3 0.2008 0.3394 0.5513)
-    );
   background: var(--button-primary-color-background-default, #065996);
-  background: var(
-    --button-primary-color-background-default,
-    color(display-p3 0.2008 0.3394 0.5513)
-  );
 
   transition: all 300ms ease-out;
   color: white;
+  width: auto;
 }
 
-.calculator-form .btn-primary:hover {
+.calculator-form .btn.btn-primary:hover {
   border: 1px solid var(--button-primary-color-border-hover, #033b66);
-  border: 1px solid
-    var(
-      --button-primary-color-border-hover,
-      color(display-p3 0.1251 0.2246 0.3766)
-    );
   background: var(--button-primary-color-background-hover, #033b66);
-  background: var(
-    --button-primary-color-background-hover,
-    color(display-p3 0.1251 0.2246 0.3766)
-  );
 }
 
 /* Form Validation Styles */
@@ -1859,4 +1842,27 @@ html {
 
 .copy-value:focus-visible {
   outline-offset: 2px;
+}
+
+/* Hide stepper arrows from number inputs */
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+#nps-calculator-form button[type="submit"] {
+  width: auto !important;
+  display: inline-block !important;
+}
+
+/* Ensure form group doesn't force full width */
+.calculator-form .form-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

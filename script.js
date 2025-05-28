@@ -177,7 +177,7 @@ class TNCalculator {
       // Focus first input in NPS form
       setTimeout(() => {
         const firstInput = npsForm.querySelector(
-          'input, select, button:not([aria-hidden="true"])'
+          'input[type="number"], select:not([aria-hidden="true"])'
         );
         if (firstInput) firstInput.focus();
       }, 100);
@@ -190,30 +190,13 @@ class TNCalculator {
       // Focus first input in PS form
       setTimeout(() => {
         const firstInput = psForm.querySelector(
-          'input, select, button:not([aria-hidden="true"])'
+          'input[type="number"], select:not([aria-hidden="true"])'
         );
         if (firstInput) firstInput.focus();
       }, 100);
     });
 
-    // Handle form submission focus management
-    this.npsForm.addEventListener("submit", () => {
-      setTimeout(() => {
-        const result = document.getElementById("nps-calculator-result");
-        if (result) {
-          result.focus();
-        }
-      }, 100);
-    });
-
-    this.psForm.addEventListener("submit", () => {
-      setTimeout(() => {
-        const result = document.getElementById("ps-calculator-result");
-        if (result) {
-          result.focus();
-        }
-      }, 100);
-    });
+    // Remove the form submission focus management to let natural tab order work
   }
 
   initializeValidationListeners() {
@@ -232,6 +215,7 @@ class TNCalculator {
 
     // Add listeners to NPS form controls
     [this.npsTreatmentArea].forEach(addInputListener);
+
     this.npsLandUseSelect.addEventListener("change", () => {
       this.npsLandUseSelect.classList.remove("is-invalid");
       this.npsLandUseSelect.setCustomValidity("");
@@ -268,6 +252,7 @@ class TNCalculator {
       input.setCustomValidity("Please enter a value between 0 and 100");
       return false;
     }
+    // Allow any decimal number between 0 and 100
     input.setCustomValidity("");
     return true;
   }
@@ -297,30 +282,58 @@ class TNCalculator {
       }
     });
 
-    // Validate percentage inputs
+    // Validate percentage inputs (only for psAttenuationFactor)
     const percentageInputs = form.querySelectorAll("input[max='100']");
     percentageInputs.forEach((input) => {
-      const container = input.closest(".form-group, .mb-3");
-      if (container?.style.display === "none") {
-        return;
+      if (input.id === "psAttenuationFactor") {
+        const container = input.closest(".form-group, .mb-3");
+        if (container?.style.display === "none") {
+          return;
+        }
+
+        const value = parseFloat(input.value);
+        if (!isNaN(value) && (value < 0 || value > 100)) {
+          console.log(`Invalid percentage value in: ${input.id}`);
+          input.classList.add("is-invalid");
+
+          // Create and add invalid feedback message
+          const feedbackDiv = document.createElement("div");
+          feedbackDiv.className = "invalid-feedback";
+          feedbackDiv.textContent = "Please enter a value between 0 and 100";
+          input.parentElement.appendChild(feedbackDiv);
+
+          input.setCustomValidity("Please enter a value between 0 and 100");
+          isValid = false;
+        } else {
+          input.classList.remove("is-invalid");
+          input.setCustomValidity("");
+        }
       }
+    });
 
-      const value = parseFloat(input.value);
-      if (!isNaN(value) && (value < 0 || value > 100)) {
-        console.log(`Invalid percentage value in: ${input.id}`);
-        input.classList.add("is-invalid");
+    // Validate decimal inputs for discharge and concentration
+    const decimalInputs = ["psAvgDischarge", "psTNConcentration"];
+    decimalInputs.forEach((inputId) => {
+      const input = document.getElementById(inputId);
+      if (input && input.value.trim()) {
+        const value = parseFloat(input.value);
+        // Only check if it's a valid number and not negative
+        if (isNaN(value) || value < 0) {
+          console.log(`Invalid decimal value in: ${inputId}`);
+          input.classList.add("is-invalid");
 
-        // Create and add invalid feedback message
-        const feedbackDiv = document.createElement("div");
-        feedbackDiv.className = "invalid-feedback";
-        feedbackDiv.textContent = "Please enter a value between 0 and 100";
-        input.parentElement.appendChild(feedbackDiv);
+          // Create and add invalid feedback message
+          const feedbackDiv = document.createElement("div");
+          feedbackDiv.className = "invalid-feedback";
+          feedbackDiv.textContent = "Please enter a valid positive number";
+          input.parentElement.appendChild(feedbackDiv);
 
-        input.setCustomValidity("Please enter a value between 0 and 100");
-        isValid = false;
-      } else {
-        input.classList.remove("is-invalid");
-        input.setCustomValidity("");
+          input.setCustomValidity("Please enter a valid positive number");
+          isValid = false;
+        } else {
+          input.classList.remove("is-invalid");
+          input.setCustomValidity("");
+        }
       }
     });
 
@@ -438,9 +451,18 @@ class TNCalculator {
       const attenuationFactor =
         parseFloat(document.getElementById("psAttenuationFactor").value) / 100;
 
-      // Calculate TN load reduction
+      // NEW VERSION
+      // Using the PHP logic: computeLoad($dis, $conc, $fact)
+      // $calcLoad = $dis * 3785 * 365 * $conc/1000 * .0011 * $fact * 2000;
       const tnLoadReduction =
-        1.524 * (discharge * concentration * attenuationFactor);
+        // 1.524 * (discharge * concentration * attenuationFactor);
+        discharge *
+        3785 *
+        365 *
+        (concentration / 1000) *
+        0.0011 *
+        attenuationFactor *
+        2000;
 
       this.displayPSResult(tnLoadReduction);
     } catch (error) {
@@ -455,32 +477,22 @@ class TNCalculator {
       <div class="calculator-result-container" 
            role="alert"
            aria-atomic="true"
-           aria-relevant="all"
-           tabindex="0">
+           aria-relevant="all">
         <div class="result-content">
-          <h4>${tnLoadReduction.toFixed(2)} lbs/year</h4>
+          <h4>${tnLoadReduction.toFixed(4)} lbs/year</h4>
           <p>NPS TN Load Reduction</p>
           <div class="sr-only">Calculation complete. The NPS TN Load Reduction is ${tnLoadReduction.toFixed(
-            2
+            4
           )} pounds per year.</div>
         </div>
         <button type="button" class="copy-value" data-value="${tnLoadReduction.toFixed(
-          2
+          4
         )}" aria-label="Copy result value">
           Copy Value
         </button>
       </div>
     `;
     this.initializeCopyButtons();
-    // Focus the result container
-    setTimeout(() => {
-      const resultContainer = resultElement.querySelector(
-        ".calculator-result-container"
-      );
-      if (resultContainer) {
-        resultContainer.focus();
-      }
-    }, 100);
   }
 
   displayPSResult(tnLoadReduction) {
@@ -489,32 +501,22 @@ class TNCalculator {
       <div class="calculator-result-container" 
            role="alert"
            aria-atomic="true"
-           aria-relevant="all"
-           tabindex="0">
+           aria-relevant="all">
         <div class="result-content">
-          <h4>${tnLoadReduction.toFixed(2)} lbs/year</h4>
+          <h4>${tnLoadReduction.toFixed(4)} lbs/year</h4>
           <p>PS TN Load Reduction</p>
           <div class="sr-only">Calculation complete. The PS TN Load Reduction is ${tnLoadReduction.toFixed(
-            2
+            4
           )} pounds per year.</div>
         </div>
         <button type="button" class="copy-value" data-value="${tnLoadReduction.toFixed(
-          2
+          4
         )}" aria-label="Copy result value">
           Copy Value
         </button>
       </div>
     `;
     this.initializeCopyButtons();
-    // Focus the result container
-    setTimeout(() => {
-      const resultContainer = resultElement.querySelector(
-        ".calculator-result-container"
-      );
-      if (resultContainer) {
-        resultContainer.focus();
-      }
-    }, 100);
   }
 
   initializeCopyButtons() {
@@ -560,6 +562,38 @@ class TNCalculator {
       button.classList.remove("active");
       button.textContent = originalText;
     }, 2000);
+  }
+
+  createResultContainer(result) {
+    const container = document.createElement("div");
+    container.className = "calculator-result-container";
+    container.tabIndex = "0";
+    container.setAttribute("role", "region");
+    container.setAttribute("aria-label", "Calculation Result");
+
+    const content = document.createElement("div");
+    content.className = "result-content";
+
+    const value = document.createElement("h4");
+    value.textContent = result.value;
+    value.setAttribute("aria-label", `Result: ${result.value}`);
+
+    const label = document.createElement("p");
+    label.textContent = result.label;
+
+    content.appendChild(value);
+    content.appendChild(label);
+
+    const copyButton = document.createElement("button");
+    copyButton.className = "copy-value";
+    copyButton.textContent = "Copy Value";
+    copyButton.setAttribute("aria-label", "Copy result value");
+    copyButton.tabIndex = "0";
+
+    container.appendChild(content);
+    container.appendChild(copyButton);
+
+    return container;
   }
 }
 

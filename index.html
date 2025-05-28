@@ -83,11 +83,7 @@
       <div class="content-container">
         <!-- Instruction Section -->
         <section class="instruction-section">
-          <div
-            class="instruction-content"
-            id="instruction-content"
-            tabindex="0"
-          >
+          <div class="instruction-content" id="instruction-content">
             <h1>TBEP Action Plan Database</h1>
             <p>
               Please enter a new project by entering the information requested
@@ -111,11 +107,7 @@
 
         <!-- Report New Project Section -->
         <section id="new-project">
-          <div
-            class="report-section"
-            id="new-project-instructions"
-            tabindex="0"
-          >
+          <div class="report-section" id="new-project-instructions">
             <h2 id="new-project-heading">Report new project</h2>
             <p id="new-project-description">
               Please enter a new project by entering the information requested
@@ -154,7 +146,7 @@
             </div>
             <div class="calculator-container">
               <div class="card">
-                <div class="calculator-content" tabindex="0">
+                <div class="calculator-content">
                   <h2 id="calculator-heading">TN estimation load calculator</h2>
                   <p class="calculator-description" id="calculator-description">
                     Only use this tool if you don't already have a TN estimation
@@ -185,7 +177,6 @@
                         role="tab"
                         aria-controls="nps"
                         aria-selected="true"
-                        tabindex="0"
                       >
                         Non-Point Source
                       </button>
@@ -200,7 +191,6 @@
                         role="tab"
                         aria-controls="ps"
                         aria-selected="false"
-                        tabindex="-1"
                       >
                         Point Source
                       </button>
@@ -213,7 +203,6 @@
                       id="nps"
                       role="tabpanel"
                       aria-labelledby="nps-tab"
-                      tabindex="0"
                     >
                       <form
                         id="nps-calculator-form"
@@ -224,7 +213,7 @@
                             >Land Use</label
                           >
                           <select
-                            class="form-control"
+                            class="form-select"
                             id="npsLandUse"
                             name="npsLandUse"
                             required
@@ -245,7 +234,7 @@
                             >Treatment Method</label
                           >
                           <select
-                            class="form-control"
+                            class="form-select"
                             id="npsTreatmentMethod"
                             name="npsTreatmentMethod"
                             required
@@ -269,11 +258,12 @@
                             class="form-control"
                             id="npsTreatmentArea"
                             name="npsTreatmentArea"
-                            step="0.01"
+                            step="any"
                             min="0"
                             required
                             aria-describedby="npsTreatmentAreaHelp"
                             title="Enter the treatment area in acres. Decimal values are allowed."
+                            onblur="setTimeout(() => console.log('Next focused element:', document.activeElement), 0)"
                           />
                           <div
                             id="npsTreatmentAreaHelp"
@@ -283,10 +273,17 @@
                             are allowed.
                           </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">
-                          Calculate NPS TN Load Reduction
-                        </button>
+                        <div class="form-group">
+                          <button type="submit" class="btn btn-primary">
+                            Calculate NPS TN Load Reduction
+                          </button>
+                        </div>
                       </form>
+                      <div
+                        id="nps-calculator-result"
+                        aria-live="polite"
+                        aria-atomic="true"
+                      ></div>
                     </div>
 
                     <!-- Point Source Calculator -->
@@ -295,7 +292,6 @@
                       id="ps"
                       role="tabpanel"
                       aria-labelledby="ps-tab"
-                      tabindex="0"
                     >
                       <form
                         id="ps-calculator-form"
@@ -310,8 +306,8 @@
                             class="form-control"
                             id="psAvgDischarge"
                             name="psAvgDischarge"
-                            step="0.01"
                             min="0"
+                            step="any"
                             required
                             aria-describedby="psAvgDischargeHelp"
                             title="Enter the average total discharge in Million Gallons per Day (MGD). Decimal values are allowed."
@@ -335,8 +331,8 @@
                             class="form-control"
                             id="psTNConcentration"
                             name="psTNConcentration"
-                            step="0.01"
                             min="0"
+                            step="any"
                             required
                             aria-describedby="psTNConcentrationHelp"
                             title="Enter the Total Nitrogen concentration in milligrams per liter (mg/L). Decimal values are allowed."
@@ -361,7 +357,6 @@
                               class="form-control"
                               id="psAttenuationFactor"
                               name="psAttenuationFactor"
-                              step="0.01"
                               min="0"
                               max="100"
                               required
@@ -380,22 +375,13 @@
                           Calculate PS TN Load Reduction
                         </button>
                       </form>
+                      <div
+                        id="ps-calculator-result"
+                        aria-live="polite"
+                        aria-atomic="true"
+                      ></div>
                     </div>
                   </div>
-                </div>
-
-                <!-- Calculator Result -->
-                <div class="calculator-result">
-                  <div
-                    id="nps-calculator-result"
-                    aria-live="polite"
-                    aria-atomic="true"
-                  ></div>
-                  <div
-                    id="ps-calculator-result"
-                    aria-live="polite"
-                    aria-atomic="true"
-                  ></div>
                 </div>
               </div>
             </div>
@@ -404,11 +390,7 @@
 
         <!-- Existing Projects Section -->
         <section id="existing-projects" class="mb-5">
-          <div
-            class="report-section"
-            id="existing-projects-instructions"
-            tabindex="0"
-          >
+          <div class="report-section" id="existing-projects-instructions">
             <div class="sr-only" aria-live="polite">
               Note: This section contains a Smartsheet table that is not fully
               accessible due to platform limitations. The table is hidden from
@@ -488,11 +470,7 @@
           aria-labelledby="tn-allocation-heading"
           class="mb-5"
         >
-          <div
-            class="report-section"
-            id="tn-allocation-instructions"
-            tabindex="0"
-          >
+          <div class="report-section" id="tn-allocation-instructions">
             <h2 id="tn-allocation-heading">Report TN allocation transfer</h2>
             <p id="tn-allocation-description">
               Use this form to report transfers of TN allocation between
