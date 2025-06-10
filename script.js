@@ -1,13 +1,3 @@
-// Configuration for Smartsheet iframes and data
-const smartsheetConfig = {
-  formUrl: "https://app.smartsheet.com/sheets/YourFormSheetId",
-  tableUrl: "https://app.smartsheet.com/sheets/YourTableSheetId",
-  apiUrl: "https://api.smartsheet.com/2.0",
-  landUseSheetId: "3365837005082500",
-  treatmentMethodSheetId: "7586918783995780",
-  apiKey: "YOUR_API_KEY", // Replace this with your actual API key
-};
-
 // Hamburger Menu Functionality
 gsap.registerPlugin(CustomEase);
 CustomEase.create("button-ease", "0.5, 0.05, 0.05, 0.99");
@@ -119,26 +109,6 @@ function initMenuButton() {
       toggleMenu();
     }
   });
-}
-
-// Initialize Smartsheet iframes
-function initializeSmartsheetIframes() {
-  const formContainer = document.getElementById("smartsheet-form");
-  const tableContainer = document.getElementById("smartsheet-table");
-
-  // Create and insert form iframe
-  const formIframe = document.createElement("iframe");
-  formIframe.src = smartsheetConfig.formUrl;
-  formIframe.title = "Smartsheet Form";
-  formContainer.innerHTML = "";
-  formContainer.appendChild(formIframe);
-
-  // Create and insert table iframe
-  const tableIframe = document.createElement("iframe");
-  tableIframe.src = smartsheetConfig.tableUrl;
-  tableIframe.title = "Smartsheet Table View";
-  tableContainer.innerHTML = "";
-  tableContainer.appendChild(tableIframe);
 }
 
 // TN Calculator functionality
