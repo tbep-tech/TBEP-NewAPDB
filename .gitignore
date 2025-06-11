@@ -4,13 +4,20 @@ data/
 # Python script
 export_to_smartsheet_with_contancts.py
 
-# Python
+# Python scripts
+calculator/*.py
+*.py
+
+# Environment variables
+.env
+
+# Dependencies
 __pycache__/
 *.py[cod]
 *$py.class
+requirements.txt
 
 # Environment
-.env
 .venv
 env/
 venv/
